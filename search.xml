@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于pycharm无法导包的问题</title>
+    <url>/2020/03/09/%E5%85%B3%E4%BA%8Epycharm%E6%97%A0%E6%B3%95%E5%AF%BC%E5%8C%85/</url>
+    <content><![CDATA[<p><em>之前在安装了pycharm之后，本以为可以更加便捷地导入自己想要的库，然而。。。</em></p>
+<img src="/2020/03/09/%E5%85%B3%E4%BA%8Epycharm%E6%97%A0%E6%B3%95%E5%AF%BC%E5%8C%85/pic1.jpg" class>*这是用pip在终端安装的结果*
+<p>不管安装什么， 出现的只有这句红色的报错。。<br>于是有了如下的解决方案:</p>
+<h1 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h1><p>尝试从控制台(cmd)使用pip安装，可以不在目录下，找到包的路径</p>
+<img src="/2020/03/09/%E5%85%B3%E4%BA%8Epycharm%E6%97%A0%E6%B3%95%E5%AF%BC%E5%8C%85/pic2.jpg" class>*如图*
+<p>直接将其导入项目中的venu文件夹。</p>
+<img src="/2020/03/09/%E5%85%B3%E4%BA%8Epycharm%E6%97%A0%E6%B3%95%E5%AF%BC%E5%8C%85/pic3.jpg" class>
+<p>这样就可以使其在这个项目内适用了<br>这种方法只能一个一个导入，因此只能暂时解决问题</p>
+<h1 id="解决方案2"><a href="#解决方案2" class="headerlink" title="解决方案2"></a>解决方案2</h1><p>当创建一个新项目时(或者在原项目里)<br>点击左上角的File –&gt; settings 调出设置</p>
+<img src="/2020/03/09/%E5%85%B3%E4%BA%8Epycharm%E6%97%A0%E6%B3%95%E5%AF%BC%E5%8C%85/pic4.jpg" class>
+<p>点击右上角的add content root，将安装第三方包的绝对路径(在方案一中介绍了找路径的方法)直接复制过去，保存<br>就可以一次性解决所有的导入问题了</p>
+<p><a href="https://blog.csdn.net/zn505119020/article/details/74280285?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">参考blog</a></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>posthello,hexo</title>
     <url>/2020/03/07/posthello-hexo/</url>
     <content><![CDATA[<p>这是测试文件，仅用于测试</p>
@@ -23,9 +47,9 @@
         <category>博客搭建</category>
       </categories>
       <tags>
+        <tag>踩坑</tag>
         <tag>hello hexo</tag>
         <tag>搬运</tag>
-        <tag>踩坑</tag>
       </tags>
   </entry>
   <entry>
