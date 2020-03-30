@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>java中有关static的总结</title>
+    <url>/2020/03/30/java%E4%B8%AD%E6%9C%89%E5%85%B3static%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="静态-static"><a href="#静态-static" class="headerlink" title="静态(static)"></a>静态(static)</h1><p>自学了java一段时间了，决定对此作一些总结</p>
+<h1 id="静态的特点"><a href="#静态的特点" class="headerlink" title="静态的特点"></a>静态的特点</h1><ol>
+<li>全局唯一，任何一次的修改都是全局的影响</li>
+<li>只加载一次，优先于非静态</li>
+<li>使用方式上不依赖实例对象</li>
+<li>生命周期属于类级别，即从JVM加载开始到结束</li>
+</ol>
+<h1 id="静态变量-amp-静态代码块"><a href="#静态变量-amp-静态代码块" class="headerlink" title="静态变量&amp;静态代码块"></a>静态变量&amp;静态代码块</h1><ol>
+<li>静态不能在任何方法体中声明，即方法体中不能出现static字样</li>
+<li>静态方法中可以调用同类的静态变量，而不能调用非静态变量，如果想要调用，可以先创建一个实例，以此来访问类中的非静态变量</li>
+<li>一个类可以使用不包含在任何方法体中的静态代码块，当类被载入时，静态代码块被执行，且只被执行一次，静态块常用来执行类属性 的初始化</li>
+<li>程序运行时静态初始化块(static{})最先运行，然后是初始化块，最后是构造方法</li>
+</ol>
+<h1 id="静态方法-静态方法与非静态方法的区别"><a href="#静态方法-静态方法与非静态方法的区别" class="headerlink" title="静态方法(静态方法与非静态方法的区别)"></a>静态方法(静态方法与非静态方法的区别)</h1><ol>
+<li>静态方法是在类中使用static修饰的方法，在类定义的时候已经被装载和分配。而非静态方法是不加static关键字的方法</li>
+<li>静态方法在类定义时没有占用内存，只有在类被实例化成对象时，对象调用该方法才被分配内存。</li>
+<li>静态方法中只能调用静态成员或者静态方法，不能调用非静态方法或者非静态成员，而非静态方法既可以调用静态成员或者方法又可以调用其他的非静态成员或者方法。</li>
+<li>调用同类的静态方法时，可以不用创建类的实例就可以引用静态方法</li>
+</ol>
+<h1 id="静态内部类和非静态内部类"><a href="#静态内部类和非静态内部类" class="headerlink" title="静态内部类和非静态内部类"></a>静态内部类和非静态内部类</h1><ol>
+<li>静态内部类仅能访问外部类的静态成员，非静态内部类都可以访问</li>
+<li>若要在与静态内部类并列的类中访问静态内部类中的内容，则可以创建外部类的一个静态内部类的实例，然后引用</li>
+<li>若要在与静态内部类并列的类中访问非静态内部类中的内容，则先创建一个外部类的实例，然后再用外部类的实例 新建一个非静态内部类的实例，如下：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OuterClass outer &#x3D; new OuterClass();</span><br><span class="line">    OuterClass.InnerClass inner &#x3D; outer.new InnerClass();</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python中有关传值和传址的关系</title>
     <url>/2020/03/30/python%E4%B8%AD%E6%9C%89%E5%85%B3%E4%BC%A0%E5%80%BC%E5%92%8C%E4%BC%A0%E5%9D%80%E7%9A%84%E5%85%B3%E7%B3%BB/</url>
-    <content><![CDATA[<h1 id="关于这个问题，见如下代码"><a href="#关于这个问题，见如下代码" class="headerlink" title="关于这个问题，见如下代码"></a>关于这个问题，见如下代码</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;&#39;&#39;class Father:</span><br><span class="line">    def __init__(self, wordss):</span><br><span class="line">        self.word &#x3D; wordss</span><br><span class="line"></span><br><span class="line">    def f1(self, word):</span><br><span class="line">        print(word)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class sister(Father):</span><br><span class="line">    def __init__(self, words, wordss):      # # 子类后括号声明继承的父类，子类可以调用所有的父类方法</span><br><span class="line">        #  但是要想调用父类的属性（__init__内的参数），就要super().__init__(#接参数),已经开始时的__init__里也得加上</span><br><span class="line">        super().__init__(wordss)</span><br><span class="line">        self.words &#x3D; words</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s1 &#x3D; sister(&#39;2&#39;, &#39;1&#39;)</span><br><span class="line">print(s1.word)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_fun(number1, number2):</span><br><span class="line">    number1 +&#x3D; 1</span><br><span class="line">    number2 +&#x3D; 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test(number1, number2):</span><br><span class="line">    test_fun(number1, number2)</span><br><span class="line">    print(number1)</span><br><span class="line">    print(number2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    test(1, 2)      # #这种方法里调用方法，传参只是传值（指Number（）， String，tuple等不可改变变量）</span><br><span class="line"># 而list和字典等则是传址</span><br><span class="line">&#39;&#39;&#39;class Number:</span><br><span class="line">    def __init__(self, number):</span><br><span class="line">        self.number &#x3D; number</span><br><span class="line"></span><br><span class="line">number1 &#x3D; Number(1)</span><br><span class="line">number2 &#x3D; Number(2)</span><br><span class="line"></span><br><span class="line">def test_fun(number1, number2):</span><br><span class="line">    number1.number +&#x3D; 1</span><br><span class="line">    number2.number +&#x3D; 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test(number1, number2):</span><br><span class="line">    test_fun(number1, number2)</span><br><span class="line">    print(number1.number)</span><br><span class="line">    print(number2.number)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    test(number1, number2)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    #   如上假如换成对象的话就会改变number的值了</span><br></pre></td></tr></table></figure>]]></content>
+    <content><![CDATA[<h1 id="关于这个问题，见如下代码"><a href="#关于这个问题，见如下代码" class="headerlink" title="关于这个问题，见如下代码"></a>关于这个问题，见如下代码</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def test_fun(number1, number2):</span><br><span class="line">    number1 +&#x3D; 1</span><br><span class="line">    number2 +&#x3D; 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test(number1, number2):</span><br><span class="line">    test_fun(number1, number2)</span><br><span class="line">    print(number1)</span><br><span class="line">    print(number2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    test(1, 2)      # #这种方法里调用方法，传参只是传值（指Number（）， String，tuple等不可改变变量）</span><br><span class="line"># 而list和字典等则是传址</span><br><span class="line">&#39;&#39;&#39;class Number:</span><br><span class="line">    def __init__(self, number):</span><br><span class="line">        self.number &#x3D; number</span><br><span class="line"></span><br><span class="line">number1 &#x3D; Number(1)</span><br><span class="line">number2 &#x3D; Number(2)</span><br><span class="line"></span><br><span class="line">def test_fun(number1, number2):</span><br><span class="line">    number1.number +&#x3D; 1</span><br><span class="line">    number2.number +&#x3D; 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test(number1, number2):</span><br><span class="line">    test_fun(number1, number2)</span><br><span class="line">    print(number1.number)</span><br><span class="line">    print(number2.number)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    test(number1, number2)</span><br><span class="line">    &#39;&#39;&#39;</span><br><span class="line">    #   如上假如换成对象的话就会改变number的值了</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -15,8 +50,8 @@
     <title>如何把py文件打包成exe文件</title>
     <url>/2020/03/20/%E5%A6%82%E4%BD%95%E6%8A%8Apy%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85%E6%88%90exe%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="使用pyinstaller将py文件打包成exe文件"><a href="#使用pyinstaller将py文件打包成exe文件" class="headerlink" title="使用pyinstaller将py文件打包成exe文件"></a>使用pyinstaller将py文件打包成exe文件</h1><p>在使用pygame制作简单的游戏时，可以将做好的游戏打包成可执行文件发给朋友</p>
-<h2 id="安装pyinstaller"><a href="#安装pyinstaller" class="headerlink" title="安装pyinstaller"></a>安装pyinstaller</h2><p>在终端(terminal)输入<br>   <code>pip install pyinstaller</code><br>即可</p>
-<h2 id="利用pyinstaller进行打包"><a href="#利用pyinstaller进行打包" class="headerlink" title="利用pyinstaller进行打包"></a>利用pyinstaller进行打包</h2><p>可以用<br>   <code>pyinstaller -w -F xxx.py</code><br>来进行打包<br>其中xxx即为你要进行打包的文件<br>-w 是使exe文件在窗口运行(GUI)<br>-F 是打包成exe文件必须写的<br>-c 是使exe文件在控制台运行(cmd)(默认)<br>打包后的文件将会出现在当前目录的dist文件夹<br>值得注意的是，若游戏中导入了图片，则需要将其一起放在exe文件对应的文件夹中<br>或者选择更换路径</p>
+<h2 id="安装pyinstaller"><a href="#安装pyinstaller" class="headerlink" title="安装pyinstaller"></a>安装pyinstaller</h2><p>在终端(terminal)输入<br>   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install pyinstaller</span><br></pre></td></tr></table></figure><br>即可</p>
+<h2 id="利用pyinstaller进行打包"><a href="#利用pyinstaller进行打包" class="headerlink" title="利用pyinstaller进行打包"></a>利用pyinstaller进行打包</h2><p>可以用<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pyinstaller -w -F xxx.py</span><br></pre></td></tr></table></figure><br>来进行打包<br>其中xxx即为你要进行打包的文件<br>-w 是使exe文件在窗口运行(GUI)<br>-F 是打包成exe文件必须写的<br>-c 是使exe文件在控制台运行(cmd)(默认)<br>打包后的文件将会出现在当前目录的dist文件夹<br>值得注意的是，若游戏中导入了图片，则需要将其一起放在exe文件对应的文件夹中<br>或者选择更换路径</p>
 ]]></content>
       <tags>
         <tag>python</tag>
@@ -69,9 +104,9 @@
         <category>博客搭建</category>
       </categories>
       <tags>
+        <tag>踩坑</tag>
         <tag>hello hexo</tag>
         <tag>搬运</tag>
-        <tag>踩坑</tag>
       </tags>
   </entry>
   <entry>
