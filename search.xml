@@ -73,6 +73,8 @@
 <p>点击右上角的add content root，将安装第三方包的绝对路径(在方案一中介绍了找路径的方法)直接复制过去，保存<br>就可以一次性解决所有的导入问题了</p>
 <hr>
 <h2 id="方案2中在导入后会存在些许问题，有些配置文件可能还需要更改，如果方案二不可行就采用方案1"><a href="#方案2中在导入后会存在些许问题，有些配置文件可能还需要更改，如果方案二不可行就采用方案1" class="headerlink" title="方案2中在导入后会存在些许问题，有些配置文件可能还需要更改，如果方案二不可行就采用方案1"></a>方案2中在导入后会存在些许问题，有些配置文件可能还需要更改，如果方案二不可行就采用方案1</h2><p>近日在新项目中导入pygame包时，使用第二种方法，结果发现可以导入pygame包，但是很多方法已经无法使用<br>甚至连init()都已经报错<br>原因很可能是在导入包后出现的.js文件的配置出现问题<br>然而在只使用第一种方法时，则会避免这种情况</p>
+<hr>
+<p>当装上了Anaconda后，编译器可以在Setting里面选择使用Existing environment，选择Anaconda目录下的python.exe<br>这种情况下会变成3.7版本的python，pycharm中的install package都可正常使用，由于之前使用的是python的3.8.x版本<br>才会出现无法install的问题</p>
 <p><a href="https://blog.csdn.net/zn505119020/article/details/74280285?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">参考blog</a></p>
 ]]></content>
       <categories>
